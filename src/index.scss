@@ -1,1 +1,14 @@
-@import "./partials/variables";
+@use "./partials/variables" as *;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("./images/universe_space_bg.jpg");
+}
+.leaflet-container{
+    height:80vh;
+    max-width: 100vw;
+}
