@@ -16,20 +16,21 @@ const RecenterMap = ({position}) => {
 
 const Map = () => {
   const [longiLati, setLongiLati] = useState([0,0]) 
+
   const getInfo =  async () => {
   try {  const response =  await fetch(url)
     const data = await response.json()
     const {longitude, latitude} = data.iss_position
-    setLongiLati([parseFloat(longitude),parseFloat(latitude)])
+    setLongiLati([parseFloat(latitude),parseFloat(longitude)])    
   } catch (err) {
     console.log("Error fetch data: ", err)
   } 
 }
   
   useEffect( () => {
-    getInfo(url)
+    getInfo()
     const intervalId = setInterval(() => {
-      getInfo(url)
+      getInfo()
     },1000)
     
     return () => {
@@ -37,7 +38,10 @@ const Map = () => {
     }
   }, [])
   return (<>
-        <MapContainer center={[49.19522, 16.60796]} zoom={8} scrollWheelZoom={true}>
+        <MapContainer center={longiLati} 
+          zoom={8} 
+          scrollWheelZoom={true} 
+          minZoom={2.5}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -47,7 +51,7 @@ const Map = () => {
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>
           </Marker>
-          {/* <RecenterMap position={longiLati}/> */}
+          <RecenterMap position={longiLati}/>
         </MapContainer>
   </>    
   )
