@@ -13,7 +13,7 @@ body{
 .header{
     display: flex;
     align-items: center;
-    position: relative;
+    
     min-height: 3rem;
 
         h1{
@@ -24,8 +24,33 @@ body{
             transform: translateX(-50%);  
             white-space: nowrap;            
         }
-        .lang-container{
+        .settings{
+            color: $header-h-clr;
+            font-size: 1.2rem;
+            margin-right: 1rem;
             margin-left: auto;
+            cursor: pointer;
+        }
+}
+.modal{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    z-index: 1000;
+    width: 150px;    
+    display: flex;
+    flex-direction: column;
+    color: $header-h-clr;
+    font-size: 1.2rem;
+    background-color: $dark-bg-clr;
+        .auto-center{
+            display: flex;
+            justify-content: space-between;
+        }
+        .lang-container{
+            color: $header-h-clr;
+            background-color:$dark-bg-clr;
+            padding: 5px;              
         }
 }
 .leaflet-container{
