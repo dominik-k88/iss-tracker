@@ -1,13 +1,16 @@
+import { useState, createContext } from "react"
 import Map from "./components/Map"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-// import Modal from "./components/Modal";
+export const CenteringContext = createContext()
 function App() {  
-
+  const [isCenteringOn, setIsCenteringOn] = useState(true)
+  
   return (
     <>
-      <Header />
-      {/* <Modal /> */}
+      <CenteringContext.Provider value={{isCenteringOn, setIsCenteringOn}}>
+      <Header /> 
+      </CenteringContext.Provider>     
       <Map />     
       <Footer />    
     </>

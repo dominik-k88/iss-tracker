@@ -1,15 +1,23 @@
-
+import languages from "../langData"
+import { useContext } from "react"
+import { CenteringContext } from "../App"
 const Modal = () => {
+  const {isCenteringOn, setIsCenteringOn} = useContext(CenteringContext)
   return (
     <div className="modal">
         <div className="moda-content">
             <div className="auto-center">
                 <label htmlFor="center">Auto-center</label>
-                <input id="center" type="checkbox" />
+                <input id="center" type="checkbox" 
+                  checked={isCenteringOn}/>
             </div>
             <select className="lang-container" name="" id="">
-                <option value="en">EN</option>
-                <option value="cz">CZ</option>
+              {
+                languages.map((language, index) => {
+                  const {lang} = language                  
+                  return <option key={index} value={lang}>{lang.toUpperCase()}</option>
+                })
+              }              
             </select>
         </div>
     </div>
