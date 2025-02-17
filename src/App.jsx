@@ -9,9 +9,9 @@ function App() {
   return (
     <>
       <CenteringContext.Provider value={{isCenteringOn, setIsCenteringOn}}>
-      <Header /> 
-      </CenteringContext.Provider>     
-      <Map />     
+        <Header />           
+        <Map />     
+      </CenteringContext.Provider> 
       <Footer />    
     </>
   )

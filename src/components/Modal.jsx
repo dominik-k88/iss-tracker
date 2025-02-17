@@ -9,7 +9,8 @@ const Modal = () => {
             <div className="auto-center">
                 <label htmlFor="center">Auto-center</label>
                 <input id="center" type="checkbox" 
-                  checked={isCenteringOn}/>
+                  defaultChecked={isCenteringOn} 
+                  onChange={() => setIsCenteringOn(!isCenteringOn)}/>
             </div>
             <select className="lang-container" name="" id="">
               {
