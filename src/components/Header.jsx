@@ -21,6 +21,7 @@ const Header = () => {
       document.removeEventListener("mousedown", closeModal)
     }
   }, [isModalOn])
+  
   return (<>
     
     <div className="header">

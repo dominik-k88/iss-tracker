@@ -1,8 +1,11 @@
 import languages from "../langData"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { CenteringContext } from "../App"
+
 const Modal = () => {
+
   const {isCenteringOn, setIsCenteringOn} = useContext(CenteringContext)
+  
   return (
     <div className="modal">
         <div className="moda-content">
@@ -12,6 +15,7 @@ const Modal = () => {
                   defaultChecked={isCenteringOn} 
                   onChange={() => setIsCenteringOn(!isCenteringOn)}/>
             </div>
+            <hr />
             <select className="lang-container" name="" id="">
               {
                 languages.map((language, index) => {

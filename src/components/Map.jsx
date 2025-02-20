@@ -16,10 +16,12 @@ const RecenterMap = ({position}) => {
 }
 
 const Map = () => {
+
   const [longiLati, setLongiLati] = useState([0,0])   
   const {isCenteringOn} = useContext(CenteringContext)
+
   const getInfo =  async () => {
-  try {  const response =  await fetch(url)
+    try {  const response =  await fetch(url)
     const data = await response.json()
     const {longitude, latitude} = data.iss_position
     setLongiLati([parseFloat(latitude),parseFloat(longitude)])    
@@ -49,7 +51,7 @@ const Map = () => {
           />
           <Marker position={longiLati}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              International space station
             </Popup>
           </Marker>
           { isCenteringOn && <RecenterMap position={longiLati}/>}
