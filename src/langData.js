@@ -1,11 +1,16 @@
 const languages = [
-    {
-        lang: "en",
-        checkBox: "Auto-center"
+    { 
+        label: "en",
+        title: "ISS tracker",
+        checkBox: "Auto-center",
+        popup: "International Space Station"
+        
     },
     {
-        lang: "cz",
-        checkBox: "Auto-vycentrování"
+        label: "cz",
+        title: "MVS - sledovač",
+        checkBox: "Auto-vycentrování",
+        popup: "Mezinárodní Vesmírná Stanice"
     }
 ]
 export default languages

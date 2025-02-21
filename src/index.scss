@@ -38,17 +38,17 @@ body{
     top: calc(var(--header-height, 10%) + 2px);
     right: 0;
     z-index: 1000;
-    width: 150px;   
+    width: 220px;   
     padding: 5px 10px; 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-around;    
     color: $header-h-clr;
     font-size: 1.3rem;
     background-color: $dark-bg-clr;    
         .auto-center{
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between;            
             margin-bottom: 5px;
         }
         

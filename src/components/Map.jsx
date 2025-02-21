@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { MapContainer, TileLayer,Marker, Popup, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
-import { CenteringContext } from '../App';
+import { AppContext } from '../App';
 
 const url = "http://api.open-notify.org/iss-now.json"
 
@@ -18,7 +18,7 @@ const RecenterMap = ({position}) => {
 const Map = () => {
 
   const [longiLati, setLongiLati] = useState([0,0])   
-  const {isCenteringOn} = useContext(CenteringContext)
+  const {isCenteringOn} = useContext(AppContext)
 
   const getInfo =  async () => {
     try {  const response =  await fetch(url)
