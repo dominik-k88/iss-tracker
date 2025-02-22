@@ -19,7 +19,7 @@ function App() {
       document.documentElement.style.setProperty("--header-height", headerHeight + "px")      
     }
     updatePosition()
-    
+    // "Need to be added event listener"
   }, [])
   return (
     <>

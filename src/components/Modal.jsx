@@ -12,7 +12,7 @@ const Modal = () => {
                 <label htmlFor="center">{currentLanguage ?
                  currentLanguage.checkBox : "Auto-center"}</label>
                 <input id="center" type="checkbox" 
-                  defaultChecked={isCenteringOn} 
+                  checked={isCenteringOn} 
                   onChange={() => setIsCenteringOn(!isCenteringOn)}/>
             </div>
             <hr />

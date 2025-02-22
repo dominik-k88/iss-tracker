@@ -18,8 +18,8 @@ const RecenterMap = ({position}) => {
 const Map = () => {
 
   const [longiLati, setLongiLati] = useState([0,0])   
-  const {isCenteringOn} = useContext(AppContext)
-
+  const {isCenteringOn, languages, findCurrentLanguage} = useContext(AppContext)
+  const currentLanguage = findCurrentLanguage(languages)
   const getInfo =  async () => {
     try {  const response =  await fetch(url)
     const data = await response.json()
@@ -51,11 +51,30 @@ const Map = () => {
           />
           <Marker position={longiLati}>
             <Popup>
-              International space station
+              {currentLanguage ? currentLanguage.popup : "ISS"}
             </Popup>
           </Marker>
           { isCenteringOn && <RecenterMap position={longiLati}/>}
         </MapContainer>
+        <div className="info-container">
+          <table className='info-table'>
+            <thead>
+              <tr className='main-head'>
+                <th><h2>{currentLanguage ? currentLanguage["table-title"] : "Coords"}</h2></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className='info-row'>
+                <th>{currentLanguage ? currentLanguage.lati : "Latitude"}:</th>
+                <td>{longiLati[0]}</td>
+              </tr>
+              <tr className='info-row'>
+                <th>{currentLanguage ? currentLanguage.longi: "Longitude"}:</th>
+                <td>{longiLati[1]}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
   </>    
   )
 }
