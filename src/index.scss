@@ -1,4 +1,5 @@
 @use "./partials/variables" as *;
+@use "./partials/mixins" as *;
 *{
     margin: 0;
     padding: 0;
@@ -7,6 +8,7 @@
 :root{
     --header-height: 60px;
 }
+
 body{
     display: flex;
     flex-direction: column;
@@ -19,14 +21,14 @@ body{
 
         h1{
             position: absolute;
-            color: $header-h-clr;        
+            color: $main-text-clr;        
             text-align: center;  
             left: 50%;
             transform: translateX(-50%);  
             white-space: nowrap;            
         }
         .settings{
-            color: $header-h-clr;
+            color: $main-text-clr;
             font-size: 1.2rem;
             margin-right: 20px;
             margin-left: auto;
@@ -43,7 +45,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-around;    
-    color: $header-h-clr;
+    color: $main-text-clr;
     font-size: 1.3rem;
     background-color: $dark-bg-clr;    
         .auto-center{
@@ -53,7 +55,7 @@ body{
         }
         
         .lang-container{
-            color: $header-h-clr;
+            color: $main-text-clr;
             background-color:$dark-bg-clr;
             border: none;
             outline: none;                         
@@ -64,7 +66,7 @@ body{
     max-width: 100vw;
 }
 .info-table{
-    color: $header-h-clr;
+    color: $main-text-clr;
     background-image:linear-gradient(rgba(35, 34, 34, 0.6) 90%, transparent);
     width: 100%;
     padding: 5px 15px;
@@ -89,4 +91,27 @@ body{
         width: 100%;   
         margin-bottom: 5px;            
     }
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: $main-text-clr;
+    height: $footer-heaight;
+    max-height: 80px;           
+    .links{
+        svg{
+            height: 1.5em;
+            width: 1.5em;           
+        }
+        .fb{
+            margin-right: 10px
+        }
+    }
+    span{
+        font-style: italic
+    } 
+    @include default-link; 
 }

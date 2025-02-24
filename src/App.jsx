@@ -25,9 +25,9 @@ function App() {
     <>
       <AppContext.Provider value={{isCenteringOn, setIsCenteringOn, languages, currentLang, setCurrentLang, findCurrentLanguage}}>
         <Header />           
-        <Map />     
-      </AppContext.Provider> 
-      <Footer />    
+        <Map />  
+        <Footer />    
+      </AppContext.Provider>          
     </>
   )
 }

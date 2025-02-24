@@ -17,7 +17,7 @@ const languages = [
         "table-title": "Souřadnice" ,
         lati: "Zeměp. šířka",
         longi: "Zeměp. délka",
-        made: "Vytvořil  "
+        made: "Vytvořil "
     }
 ]
 export default languages

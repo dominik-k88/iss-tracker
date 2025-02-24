@@ -1,0 +1,7 @@
+@use "./variables" as *;
+@mixin default-link {
+    a:link, a:visited,a:active{
+        text-decoration: none;   
+        color: $main-text-clr;    
+    };
+};
