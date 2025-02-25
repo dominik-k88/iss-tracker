@@ -2,5 +2,12 @@
 $main-text-clr: rgb(217, 217, 217);
 $dark-bg-clr:black;
 
-/* HEIGHTS*/
+/* Scale*/
 $footer-heaight: 180px;
+$max-width-main: 1024px;
+
+/* Breakpoints */
+$breakpoints: (
+    medium: 768px,
+    large: 1024px
+)

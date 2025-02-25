@@ -1,7 +1,17 @@
+@use "sass:map";
 @use "./variables" as *;
+
+/** Setup **/
 @mixin default-link {
     a:link, a:visited,a:active{
         text-decoration: none;   
         color: $main-text-clr;    
     };
 };
+
+/**Breakpoints **/
+@mixin respond-to($size) {
+    @media (min-width: map.get($breakpoints, $size)) {
+        @content;
+    }
+}

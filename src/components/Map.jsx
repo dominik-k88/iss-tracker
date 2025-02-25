@@ -40,7 +40,7 @@ const Map = () => {
       clearInterval(intervalId)
     }
   }, [])
-  return (<>
+  return (<div className='main-map-container'>
         <MapContainer center={longiLati} 
           zoom={8} 
           scrollWheelZoom={true} 
@@ -59,7 +59,7 @@ const Map = () => {
         <div className="info-container">
           <table className='info-table'>
             <thead>
-              <tr className='main-head'>
+              <tr className='info-head'>
                 <th><h2>{currentLanguage ? currentLanguage["table-title"] : "Coords"}</h2></th>
               </tr>
             </thead>
@@ -75,7 +75,7 @@ const Map = () => {
             </tbody>
           </table>
         </div>
-  </>    
+  </div>    
   )
 }
 
