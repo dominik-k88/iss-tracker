@@ -2,8 +2,19 @@ import { useEffect, useState, useContext } from 'react';
 import { MapContainer, TileLayer,Marker, Popup, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import { AppContext } from '../AppContext';
+import L from "leaflet";
 
-const url = "http://api.open-notify.org/iss-now.json"
+// const url = "http://api.open-notify.org/iss-now.json"
+const url = "https://api.wheretheiss.at/v1/satellites/25544"
+
+const customMarker = new L.Icon({
+  iconUrl: "/images/marker-icon.png", 
+  shadowUrl: "/images/marker-shadow.png",
+  iconSize: [25, 41], 
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
 
 const RecenterMap = ({position}) => {
   const map = useMap()
@@ -20,15 +31,17 @@ const Map = () => {
   const [longiLati, setLongiLati] = useState([0,0])   
   const {isCenteringOn, languages, findCurrentLanguage} = useContext(AppContext)
   const currentLanguage = findCurrentLanguage(languages)
+
   const getInfo =  async () => {
-    try {  const response =  await fetch(url)
-    const data = await response.json()
-    const {longitude, latitude} = data.iss_position
-    setLongiLati([parseFloat(latitude),parseFloat(longitude)])    
-  } catch (err) {
+    try {  
+      const response =  await fetch(url)
+      const data = await response.json()
+      const {longitude, latitude} = data
+      setLongiLati([parseFloat(latitude),parseFloat(longitude)])    
+    } catch (err) {
     console.log("Error fetch data: ", err)
-  } 
-}
+    } 
+  }
   
   useEffect( () => {
     getInfo()
@@ -49,7 +62,7 @@ const Map = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={longiLati}>
+          <Marker position={longiLati} icon={customMarker}>
             <Popup>
               {currentLanguage ? currentLanguage.popup : "ISS"}
             </Popup>

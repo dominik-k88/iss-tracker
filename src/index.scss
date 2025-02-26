@@ -55,7 +55,7 @@ body{
     flex-direction: column;
     justify-content: space-around;    
     color: $main-text-clr;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     background-color: $dark-bg-clr; 
     @include respond-to(large) {
         right:var(--modal-right-pos);
@@ -81,6 +81,11 @@ body{
 .leaflet-container{
     height: calc(100vh - var(--header-height) - $footer-heaight);  
     border-radius: 10px 10px 0 0 ;  
+
+    .leaflet-popup-content{
+        font-size: 1.2em;
+        text-align: center;
+    }
 }
 .info-table{
     color: $main-text-clr;
@@ -90,10 +95,7 @@ body{
     justify-items: center;
     
     .info-head{
-        text-align: center;  
-        font: {
-            size: 1.2rem;
-        };      
+        text-align: center;                  
     }
     tbody{        
         width: 100%;            
