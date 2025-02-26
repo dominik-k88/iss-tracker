@@ -1,7 +1,7 @@
 import { TfiSettings } from "react-icons/tfi";
 import { useEffect, useState, useRef,useContext} from "react";
 import Modal from "./Modal";
-import { AppContext } from "../App";
+import { AppContext } from "../AppContext";
 
 const Header = () => {
   const [isModalOn, setIsModalOn] = useState(false)

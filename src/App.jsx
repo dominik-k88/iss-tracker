@@ -1,9 +1,9 @@
-import { useState, createContext, useEffect } from "react"
+import { useState, useEffect } from "react"
 import languages from "./langData"
 import Map from "./components/Map"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-export const AppContext = createContext()
+import { AppContext } from "./AppContext"
 
 function App() {  
   const [isCenteringOn, setIsCenteringOn] = useState(true)
@@ -14,8 +14,7 @@ function App() {
 
   useEffect(() => {
     const updatePosition = () => {
-      const headerHeight = document.querySelector(".header").offsetHeight      
-
+      const headerHeight = document.querySelector(".header").offsetHeight       
       document.documentElement.style.setProperty("--header-height", headerHeight + "px")      
     }
     updatePosition()

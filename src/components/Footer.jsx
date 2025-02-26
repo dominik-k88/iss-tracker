@@ -1,6 +1,7 @@
 import { FaFacebookF, FaGithub  } from "react-icons/fa6";
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../AppContext";
+
 const Footer = () => {
   const {languages, findCurrentLanguage} = useContext(AppContext)
   const currentLanguage = findCurrentLanguage(languages)

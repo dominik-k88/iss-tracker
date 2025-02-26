@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { MapContainer, TileLayer,Marker, Popup, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
-import { AppContext } from '../App';
+import { AppContext } from '../AppContext';
 
 const url = "http://api.open-notify.org/iss-now.json"
 

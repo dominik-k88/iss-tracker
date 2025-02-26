@@ -8,6 +8,7 @@
 }
 :root{
     --header-height: 60px;
+    --modal-right-pos: 0px;
 }
 
 body{
@@ -18,9 +19,10 @@ body{
 }
 #root{
     width: 100%;
-    max-width: $max-width-main;    
+    max-width: $max-width-main;      
 }
 .header{
+    position: relative;
     display: flex;
     align-items: center;    
     min-height: var(--header-height);
@@ -55,7 +57,9 @@ body{
     color: $main-text-clr;
     font-size: 1.3rem;
     background-color: $dark-bg-clr; 
-
+    @include respond-to(large) {
+        right:var(--modal-right-pos);
+    }
         .auto-center{
             display: flex;
             justify-content: space-between;            
