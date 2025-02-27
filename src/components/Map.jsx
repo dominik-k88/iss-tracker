@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, useRef } from 'react';
 import { MapContainer, TileLayer,Marker, Popup, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import { AppContext } from '../AppContext';
@@ -31,27 +31,33 @@ const Map = () => {
   const [longiLati, setLongiLati] = useState([0,0])   
   const {isCenteringOn, languages, findCurrentLanguage} = useContext(AppContext)
   const currentLanguage = findCurrentLanguage(languages)
+  const timeoutRef = useRef(null)
 
-  const getInfo =  async () => {
-    try {  
-      const response =  await fetch(url)
-      const data = await response.json()
-      const {longitude, latitude} = data
-      setLongiLati([parseFloat(latitude),parseFloat(longitude)])    
-    } catch (err) {
-    console.log("Error fetch data: ", err)
-    } 
-  }
+  
   
   useEffect( () => {
-    getInfo()
-    const intervalId = setInterval(() => {
-      getInfo()
-    },1000)
     
-    return () => {
-      clearInterval(intervalId)
+    const getInfo =  async () => {
+      try {  
+        const response =  await fetch(url)
+        if(!response.ok) throw new Error(`HTTP Error: ${response.status}`)
+  
+        const data = await response.json()      
+        const {longitude, latitude} = data
+        if(!isNaN(longitude) && !isNaN(latitude)) {
+          setLongiLati([parseFloat(latitude),parseFloat(longitude)]) 
+        }else {
+          console.error("Invalid longi/lati values: ", data)
+        }      
+         
+      } catch (err) {
+      console.log("Error fetch data: ", err)
+      } 
     }
+    getInfo()
+    const intervalId = setInterval(getInfo, 2000)
+    return () => clearInterval(intervalId)      
+    
   }, [])
   return (<div className='main-map-container'>
         <MapContainer center={longiLati} 
