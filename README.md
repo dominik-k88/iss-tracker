@@ -1,8 +1,8 @@
-# React + Vite
+# ISS tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is simple app which tracks current positionof International space station
 
-Currently, two official plugins are available:
+- you can switch Auto-center
+- change languages ( currently 2 available), language is persist on your device
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can see it on [THIS](https://luxury-marzipan-5b33bf.netlify.app/) page.

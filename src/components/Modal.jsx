@@ -3,7 +3,7 @@ import { AppContext } from "../AppContext"
 
 const Modal = () => {
 
-  const {isCenteringOn, setIsCenteringOn, languages, currentLang, setCurrentLang, findCurrentLanguage} = useContext(AppContext)
+  const {isCenteringOn, setIsCenteringOn, languages, currentLang, findCurrentLanguage, persistLanguage} = useContext(AppContext)
   const currentLanguage = findCurrentLanguage(languages)
   return (
     <div className="modal">
@@ -12,14 +12,14 @@ const Modal = () => {
                 <label htmlFor="center">{currentLanguage ?
                  currentLanguage.checkBox : "Auto-center"}</label>
                 <input id="center" type="checkbox" 
-                  checked={isCenteringOn} 
-                  onChange={() => setIsCenteringOn(!isCenteringOn)}/>
+                  checked={isCenteringOn}                   
+                 onChange={() => setIsCenteringOn(!isCenteringOn)}/>
             </div>
             <hr />
             <select 
               value={currentLang}
-              onChange={(e) => setCurrentLang(() => e.target.value)}               
-             className="lang-container" name="" id="">
+              onChange={(e) => persistLanguage(e)}                       
+              className="lang-container">
               {
                 languages.map((language, index) => {
                   const {label} = language                              

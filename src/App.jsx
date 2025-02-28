@@ -7,11 +7,17 @@ import { AppContext } from "./AppContext"
 
 function App() {  
   const [isCenteringOn, setIsCenteringOn] = useState(true)
-  const [currentLang, setCurrentLang] = useState("en")
+  const [currentLang, setCurrentLang] = useState(localStorage.getItem("lang") || "en")
+
   const findCurrentLanguage = (languages) => {
     return languages.find( lang => lang.label === currentLang)
   }
-
+  const persistLanguage = (event) => {
+    const langValue = event.target.value    
+    setCurrentLang(langValue)
+    localStorage.setItem("lang", langValue)
+    console.log(langValue)
+  }
   useEffect(() => {
     const updatePosition = () => {
       const headerHeight = document.querySelector(".header").offsetHeight       
@@ -22,7 +28,7 @@ function App() {
   }, [])
   return (
     <>
-      <AppContext.Provider value={{isCenteringOn, setIsCenteringOn, languages, currentLang, setCurrentLang, findCurrentLanguage}}>
+      <AppContext.Provider value={{isCenteringOn, setIsCenteringOn, languages, currentLang, findCurrentLanguage, persistLanguage}}>
         <Header />           
         <Map />  
         <Footer />    
